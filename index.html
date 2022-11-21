@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Serica's Web Dev Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+
+
+
+  </head>
+
+  <body>
+
+
+    <nav>
+
+      <ul class="nav justify-content-center navbar">
+
+        <li class="nav-item">
+          <a class="nav-link navtext" href="https://sericakitty.github.io/">Home</a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+    <main class="footerfixer">
+
+      <div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1>Probability Calculator</h1>
+        <div class="sourcecode"><a href="https://github.com/sericakitty/probability_calculator" class=" srccodelink " target="_blank">Source code link</a></div>
+
+        <div class="customarcenter">
+
+          <!-- Game Start Screen -->
+          <div id="startSection" class="centeringcontainer">
+            <p>
+              This is a probability calculator.
+              <br />
+              You have change to choose different kind of ball and number of balls and put them into the hat.
+              <br />
+              Next you will choose type of ball you want to draw and number of balls you want to draw.
+              <br />
+              Program will calculate the probability of drawing the ball you expected.
+            </p>
+            <br />
+            <button class="btn" id="startSectionButton" type="button">Start</button>
+           
+          </div>
+
+
+
+
+
+          <div id="addSection" class="centeringcontainer">
+            <p>
+              This section defines a type of balls and how many of them you put inside a hat.
+
+              First choose a type of ball you want to add to the hat.
+              <br />
+              Next input the number of balls you want to add to the hat. If you choose the same type of ball again, the number of balls will be updated.
+              <br />
+              Lastly click the "Insert inside Hat list" button to add the ball to the hat.
+            </p>
+
+
+            <!-- korjaa tää vierekkäin kaikki-->
+            <div class="row centeringcontainer">
+
+              <!--col on bootstrap class-->
+              <div class="col">
+                <img id="addBallLeftArrow" class="leftarrow" src="src/img/left.svg" alt="left arrow" />
+              </div>
+
+
+
+              <div class="col">
+                <div data-color="blue" data-type="dots" class="type theballcontainer" id="addBallDiv">
+                  <img id="addBallImg" src="./src/img/blue/dots.svg" class="theball" alt="dots" />
+
+                </div>
+              </div>
+
+
+
+              <div class="col">
+                <img id="addBallRightArrow" class="rightarrow" src="src/img/right.svg" alt="right arrow" />
+              </div>
+
+
+
+              <span id="addBallImgName" class="name">dots</span>
+
+            </div>
+
+            <div>
+              <input id="insideHatBallNumber" type="number" onfocus="this.value=''" placeholder=" Input integer value here" />
+            </div>
+
+            <div>
+              <button class="btn" id="insideHatButton" type="button">Insert inside Hat list</button>
+            </div>
+            
+            <div>
+              <button class="btn" id="addSectionButton" type="button">Next Section</button>
+            </div>
+          </div>
+
+
+
+
+
+          <div id="expectedSection" class="centeringcontainer">
+            <p>
+              This section defines the balls you are expecting to get when you are pulling balls from the hat.
+              <br />
+              First choose from the list ball you want to get. If you choose the same ball again, the number of balls will be updated.
+              <br />
+              Next give number how many of them you are expecting to get.
+              <br />
+              Lastly click the "Insert inside expected list" button to add the ball to the expected balls.
+              <br />
+              Inside of the hat: [<span id="insideHatSummary"></span>]
+              <br />
+              Expected balls: [<span id="expectedHatSummary"></span>]
+            </p>
+
+
+
+            <div class="row centeringcontainer">
+
+              <!--col on bootstrap class-->
+              <div class="col">
+                <img id="expectedBallLeftArrow" class="leftarrow" src="src/img/left.svg" alt="left arrow" />
+              </div>
+
+
+              <div class="col">
+                <div data-color="blue" data-type="plain" class="type theballcontainer" id="expectedBallDiv">
+                  <img id="expectedBallImg" src="./src/img/blue/plain.svg" class="theball" alt="plain blue" />
+
+                </div>
+              </div>
+
+
+              <div class="col">
+                <img id="expectedBallRightArrow" class="rightarrow" src="src/img/right.svg" alt="right arrow" />
+              </div>
+
+
+              <span id="expectedBallImgName" class="name">plain blue</span>
+
+
+            </div>
+
+
+
+            <div>
+              <input id="expectedHatBallNumber" type="number" min=0 placeholder=" Input integer value here" onfocus="this.value=''" />
+            </div>
+
+
+
+            <div>
+              <button class="btn" id="expectedHatButton" type="button">Insert inside expected list</button>
+            </div>
+
+
+
+            <div>
+              <button class="btn" id="expectedSectionButton" type="button">Next Section</button>
+            </div>
+          </div>
+
+          <div id="drawSection" class="centeringcontainer">
+            <p>
+              This section defines how many balls are pulled from the hat at the same time.
+              <br />
+              You have <span id="sumOfballs"></span> balls inside hat.
+              <br />
+              You are expecting to get <span id="sumOfExpectedBalls"></span> balls.
+              <br />
+              Enter how many balls will be pulled from the hat at the same time.
+              <br />
+              Please give a whole number and no negative number (example: 10).
+            </p>
+
+
+
+            <div>
+              <input id="numberOfBallsDrawnInput" type="number" min=0 placeholder=" Input integer value here" onfocus="this.value=''" />
+            </div>
+
+
+
+            <div>
+              <button class="btn" id="drawSectionButton" type="button">Next Section</button>
+            </div>
+          </div>
+
+          <div id="experimentSection" class="centeringcontainer">
+            <p>
+              This section defines how many times the experiment is repeated.
+              <br />
+              Give a whole number and no negative number (example: 1000).
+              <br />
+              Max number is 1000000.
+            </p>
+
+            
+
+            <div>
+              <input id="numberOfExperimentsInput" type="number" min=0 max=1000000 placeholder=" Input integer value here" onfocus="this.value=''" />
+            </div>
+
+
+
+            <div>
+              <button class="btn" id="experimentSectionButton" type="button">Calculate</button>
+            </div>
+
+            <div class="outputcontainer">
+              <span id="output"></span>
+            </div>
+             
+            
+            <div>
+              <button class="btn" id="resetButton" type="button">Start again?</button>
+            </div>
+            
+          </div>
+
+          <py-script src="./src/probability_calculator.py"></py-script>
+
+        </div>
+
+      </div>
+
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <footer class="footer" id="footer"></footer>
+
+  </body>
+
+</html>
