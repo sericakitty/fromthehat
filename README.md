@@ -1,20 +1,25 @@
-# Probability Calculator
+# From the Hat
 
-This is a probability calculator.
+This is a probability calculator - game.
 You have change to choose different kind of ball and number of balls and put them into the hat.
 Next you will choose type of ball you want to draw and number of balls you want to draw.
 Program will calculate the probability of drawing the ball you expected.
 
 # Programming languages used
 
-Python, html, PyScript
+  - Python 
+  - PyScript
+  - Html
+  - Css
 
 # Installation
 
-No niided
+No needed
 
-## Program is running on https://sericakitty.github.io/probability_calculator/
+## Program is running on 
+
+https://sericakitty.github.io/fromthehat/
 
 ## Licence
 
-Copyright sericakitty.github.io
+Serica Kitty 2022
